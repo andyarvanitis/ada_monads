@@ -10,5 +10,6 @@ executables = ["hello_world"]
 
 [build-switches]
 "*".style_checks = "No"
+"*".ada_version = "Ada2022"
 [[depends-on]]
 gnatprove = "^12.1.1"
