@@ -5,9 +5,9 @@ generic
    type ma is private;
    type mb is private;
    --  return :: a -> m a
-   with function return_a(x: in a) return ma;
+   with function unit_a(x: in a) return ma;
    --  return :: b -> m b
-   with function return_b(x: in b) return mb;
+   with function unit_b(x: in b) return mb;
    -- (>>=) :: m a -> (a -> m a) -> m a
    with function bind_aa(mx: in ma; f: access function(y: in a) return ma) return ma;
    -- (>>=) :: m a -> (a -> m b) -> m b
@@ -19,8 +19,8 @@ package monads is
    pragma SPARK_Mode;
    pragma elaborate_body;
 
-   function retrn(x: in a) return ma is (return_a(x));
-   function retrn(x: in b) return mb is (return_b(x));
+   function unit(x: in a) return ma is (unit_a(x));
+   function unit(x: in b) return mb is (unit_b(x));
 
    function ">="(mx: in ma; f: access function(y: in a) return ma) return ma
       renames bind_aa;
@@ -55,8 +55,8 @@ package monads is
       --  m >>= (\x -> k x >>= h)  =  (m >>= k) >>= h
       --
       function verify(x: in a; mx: in ma) return boolean
-         with pre => (retrn(x) >= k'access) = k(x) and
-                     (mx >= retrn'access) = mx and
+         with pre => (unit(x) >= k'access) = k(x) and
+                     (mx >= unit'access) = mx and
                      (mx >= fx'access) = ((mx >= k'access) >= h'access);
 
    end verification;

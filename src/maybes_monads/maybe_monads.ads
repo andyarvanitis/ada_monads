@@ -6,7 +6,7 @@ package maybe_monads is
    pragma pure;
 
    --  return :: a -> m a
-   function mreturn(x: in a.t) return a.maybe is (just(x));
+   function unit(x: in a.t) return a.maybe is (just(x));
 
    generic
       with package b is new maybes (<>); use b;

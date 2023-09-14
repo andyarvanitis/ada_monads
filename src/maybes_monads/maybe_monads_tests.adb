@@ -24,8 +24,8 @@ package body maybe_monads_tests is
                                     b => boolean,
                                     ma => ints.maybe,
                                     mb => bools.maybe,
-                                    return_a => m_ints.mreturn,
-                                    return_b => m_bools.mreturn,
+                                    unit_a => m_ints.unit,
+                                    unit_b => m_bools.unit,
                                     bind_aa => m_ints.">=",
                                     bind_ab => b_ib.">=",
                                     bind_ba => b_bi.">=");

@@ -5,7 +5,7 @@ package body monads is
 
       function verify(x: in a; mx: in ma) return boolean is
       begin
-         if retrn(x) = mx then
+         if unit(x) = mx then
             return true;
          else
             return false;
