@@ -2,7 +2,7 @@ with maybes;
 with maybe_monads;
 with monads;
 
-package body maybe_monad_tests is
+package body maybe_monads_tests is
    pragma SPARK_Mode;
 
    package ints is new maybes(integer); use ints;
@@ -39,4 +39,4 @@ package body maybe_monad_tests is
              laws2.verify(i, just(i));
    end test_maybe;
 
-end maybe_monad_tests;
+end maybe_monads_tests;
