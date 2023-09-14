@@ -1,0 +1,14 @@
+name = "hello_world"
+description = "Shiny new project"
+version = "0.1.0-dev"
+
+authors = ["Andy Arvanitis"]
+maintainers = ["Andy Arvanitis <andy.arvanitis@gmail.com>"]
+maintainers-logins = ["andyarvanitis"]
+
+executables = ["hello_world"]
+
+[build-switches]
+"*".style_checks = "No"
+[[depends-on]]
+gnatprove = "^12.1.1"
