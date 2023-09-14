@@ -3,10 +3,10 @@ generic
 package maybes is
    pragma pure;
 
-   type kinds is (e_nothing, e_just);
+   type values is (e_nothing, e_just);
 
-   type maybe(kind: kinds := e_nothing) is record
-      case kind is
+   type maybe(value: values := e_nothing) is record
+      case value is
          when e_nothing => null;
          when e_just => 
             data: t;
@@ -15,17 +15,17 @@ package maybes is
 
    -- Data constructors
 
-   function nothing return maybe is (kind => e_nothing);
+   function nothing return maybe is (value => e_nothing);
 
    function just(x: in t) return maybe is (maybe'(e_just, x));
 
    -- Utility functions
 
-   function is_nothing(m: in maybe) return boolean is (m.kind = e_nothing);
+   function is_nothing(m: in maybe) return boolean is (m.value = e_nothing);
 
-   function is_just(m: in maybe) return boolean is (m.kind = e_just);
+   function is_just(m: in maybe) return boolean is (m.value = e_just);
 
    function from_just(m: in maybe) return t is (m.data)
-      with pre => m.kind = e_just;
+      with pre => m.value = e_just;
 
 end maybes;

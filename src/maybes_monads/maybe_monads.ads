@@ -14,7 +14,7 @@ package maybe_monads is
       function ">="(mx: in a.maybe;
                      f: not null access function(x: in a.t) return b.maybe)
                return b.maybe is
-         (case mx.kind is
+         (case mx.value is
             when e_just => f(mx.data),
             when e_nothing => nothing);
    end binds;
